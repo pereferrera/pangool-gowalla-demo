@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.datasalt.pangool.gowalla</groupId>
+  <version>0.1</version>
+  
+  <artifactId>pangool-gowalla-demo</artifactId>
+  <packaging>jar</packaging>
+  <name>Pangool Gowalla Demo</name>
+  <description>A crazy spatio-temporal-MR-kind-of-thing</description>
+
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+	<build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <encoding>UTF-8</encoding>
+          <source>1.6</source>
+          <target>1.6</target>
+          <optimize>true</optimize>
+        </configuration>
+      </plugin>
+
+      <!-- create job jar -->
+	  <plugin>
+	    <artifactId>maven-assembly-plugin</artifactId>
+	    <version>2.2.1</version>
+	    <configuration>
+		<descriptors>
+		  <descriptor>src/main/assembly/hadoop-job.xml</descriptor>
+		</descriptors>
+		<archive>
+		  <manifest>
+		    <mainClass>com.datasalt.pangool.gowalla.Driver</mainClass>
+	          </manifest>
+		</archive>
+	    </configuration>
+	    <executions>
+		<execution>
+       		 <id>make-assembly</id>
+			<phase>package</phase>
+  			<goals>
+  		          <goal>single</goal>
+			</goals>
+		</execution>
+	</executions>
+	</plugin>
+      	
+    </plugins>
+	</build>
+    
+	<dependencies>
+ 		<dependency>
+    		<groupId>com.datasalt.pangool</groupId>
+    		<artifactId>pangool-core</artifactId>
+    		<version>0.60.6</version>
+		</dependency>
+		
+	    <dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-core</artifactId>
+			<version>0.20.2</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.beust</groupId>
+			<artifactId>jcommander</artifactId>
+			<version>1.26</version>
+		</dependency>
+            
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>1.6</version>
+		</dependency>
+
+	    <dependency>
+    		<groupId>junit</groupId>
+      		<artifactId>junit</artifactId>
+      		<version>4.8.2</version>
+      		<scope>test</scope>
+    	</dependency>
+          
+	</dependencies>
+	
+</project>
