@@ -61,7 +61,7 @@
  		<dependency>
     		<groupId>com.datasalt.pangool</groupId>
     		<artifactId>pangool-core</artifactId>
-    		<version>0.60.6</version>
+    		<version>0.60.7-SNAPSHOT</version>
 		</dependency>
 		
 	    <dependency>
